@@ -4,7 +4,6 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -36,8 +35,6 @@ const SignUpPage = () => {
       router.push('/login');
     } catch (error: any) {
       console.log('SignUp failed', error.message);
-
-      toast.error(error.message);
     } finally {
       setLoading(false);
     }
