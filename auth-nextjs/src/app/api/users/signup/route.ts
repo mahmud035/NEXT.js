@@ -1,8 +1,9 @@
 import { dbConnect } from '@/dbConfig/dbConfig';
 import { User } from '@/models/user.model';
-import { NextRequest, NextResponse } from 'next/server';
+// import bcrypt from 'bcrypt';
 import bcrypt from 'bcrypt';
 import httpStatus from 'http-status';
+import { NextRequest, NextResponse } from 'next/server';
 
 dbConnect(); // NOTE: Connect with Database
 
@@ -18,7 +19,7 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
     if (user) {
       return NextResponse.json({
         error: 'User already exists',
-        status: 400,
+        statusCode: httpStatus.BAD_REQUEST,
       });
     }
 
@@ -35,7 +36,7 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
 
     //* Finally save the user to Database
     const savedUser = await newUser.save();
-    console.log(savedUser);
+    console.log({ savedUser });
 
     return NextResponse.json({
       success: true,

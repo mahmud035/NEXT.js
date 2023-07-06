@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { axios } from 'axios';
 
 const LoginPage = () => {
   const [user, setUser] = React.useState({
@@ -19,7 +18,7 @@ const LoginPage = () => {
 
       <label htmlFor="n">email</label>
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2 text-black border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         type="email"
         id="email"
         placeholder="email"
@@ -28,7 +27,7 @@ const LoginPage = () => {
       />
       <label htmlFor="n">password</label>
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2 text-black border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         type="password"
         id="password"
         placeholder="password"
@@ -38,7 +37,7 @@ const LoginPage = () => {
 
       <button
         onClick={handleLogin}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2  border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
       >
         Login here
       </button>
