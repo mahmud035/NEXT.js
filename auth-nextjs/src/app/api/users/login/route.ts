@@ -50,12 +50,14 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
     //* IMPORTANT: Store accessToken into Cookie inside NextResponse. So that we can retrieve the token from NextResponse.
     const response = NextResponse.json({
       success: true,
+      statusCode: httpStatus.OK,
       message: 'Login successful',
     });
 
     const cookieOptions = {
       httpOnly: true,
     };
+    // set accessToken into cookie
     response.cookies.set('accessToken', accessToken, cookieOptions);
 
     return response;
