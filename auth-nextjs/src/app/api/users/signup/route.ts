@@ -1,6 +1,5 @@
 import { dbConnect } from '@/dbConfig/dbConfig';
 import { User } from '@/models/user.model';
-// import bcrypt from 'bcrypt';
 import bcrypt from 'bcrypt';
 import httpStatus from 'http-status';
 import { NextRequest, NextResponse } from 'next/server';
