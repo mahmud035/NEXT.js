@@ -12,7 +12,7 @@ import bcrypt from 'bcrypt';
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
     // create a hashed token
-    const hashedToken = bcrypt.hash(userId.toString(), 12);
+    const hashedToken = await bcrypt.hash(userId.toString(), 12);
 
     if (emailType === 'VERIFY') {
       await User.findByIdAndUpdate(userId, {
@@ -36,7 +36,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
     });
 
     const mailOptions = {
-      from: 'mahmud.cse.bsmrstu@gmail.com',
+      from: 'hitesh@gmail.com',
       to: email,
       subject:
         emailType === 'VERIFY' ? 'Verify your email' : 'Reset your password',
@@ -45,10 +45,10 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         process.env.DOMAIN
       }/verifyemail?token=${hashedToken}">here</a> to ${
         emailType === 'VERIFY' ? 'verify your email' : 'reset your password'
-      }
-      or copy and paste the link below in your browser. <br> ${
+      } or copy and paste the link below in your browser. <br> ${
         process.env.DOMAIN
-      }/verifyemail?token=${hashedToken}</p>`,
+      }/verifyemail?token=${hashedToken}
+        </p>`,
     };
 
     const mailResponse = await transport.sendMail(mailOptions);

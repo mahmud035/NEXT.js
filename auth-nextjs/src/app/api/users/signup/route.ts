@@ -1,4 +1,5 @@
 import { dbConnect } from '@/dbConfig/dbConfig';
+import { sendEmail } from '@/helpers/mailer';
 import { User } from '@/models/user.model';
 import bcrypt from 'bcrypt';
 import httpStatus from 'http-status';
@@ -36,6 +37,9 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
     //* Finally save the user to Database
     const savedUser = await newUser.save();
     console.log({ savedUser });
+
+    //* Send verification email
+    await sendEmail({ email, emailType: 'VERIFY', userId: savedUser._id });
 
     return NextResponse.json({
       success: true,
