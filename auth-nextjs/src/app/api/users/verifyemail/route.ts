@@ -9,11 +9,12 @@ export const POST = async (request: NextRequest) => {
   try {
     const reqBody = await request.json();
     console.log({ reqBody });
-    const { accessToken } = reqBody; //or token
-    console.log({ accessToken });
+    // IMPORTANT: accessToken jeta jwt use kore create korechi seita r mailer.ts file je hashed token create kore ei 2 ta alada token. Ekhane mailer.ts file a create kore token ta receive kortechi
+    const { token } = reqBody;
+    console.log({ token });
 
     const user = await User.findOne({
-      verifyToken: accessToken,
+      verifyToken: token,
       verifyTokenExpiry: { $gt: Date.now() },
     });
 
@@ -23,12 +24,14 @@ export const POST = async (request: NextRequest) => {
         statusCode: httpStatus.BAD_REQUEST,
       });
     }
-    console.log(user);
+    console.log('Before Verify:', user);
 
     user.isVerified = true;
     user.verifyToken = undefined;
     user.verifyTokenExpiry = undefined;
     await user.save();
+
+    console.log('After Verify:', user);
 
     return NextResponse.json({
       success: true,

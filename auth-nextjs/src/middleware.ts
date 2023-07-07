@@ -4,7 +4,8 @@ import type { NextRequest } from 'next/server';
 export const middleware = (request: NextRequest) => {
   const path = request.nextUrl.pathname;
 
-  const isPublicPath = path === '/login' || path === '/signup';
+  const isPublicPath =
+    path === '/login' || path === '/signup' || path === '/verifyemail';
 
   const accessToken = request.cookies.get('accessToken')?.value || '';
 
@@ -19,5 +20,5 @@ export const middleware = (request: NextRequest) => {
 
 // Matching Paths
 export const config = {
-  matcher: ['/', '/profile/:path*', '/login', '/signup'],
+  matcher: ['/', '/profile/:path*', '/login', '/signup', '/verifyemail'],
 };
