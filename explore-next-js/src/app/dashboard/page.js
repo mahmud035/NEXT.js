@@ -1,9 +1,11 @@
-import React from 'react';
+export const metadata = {
+  title: 'Dashboard | Next Hero',
+  description: 'Next Hero',
+};
 
 const DashboardPage = () => {
   return (
     <div>
-      <h3>Sidebar</h3>
       <h1>Dashboard Page</h1>
     </div>
   );

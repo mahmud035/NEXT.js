@@ -7,7 +7,7 @@ const SingleBlog = ({ params }) => {
   return (
     <div>
       <h1>
-        Single Blog: {year || new Date().getFullYear()} for {id}
+        Single Blog: for year {year || new Date().getFullYear()} and id {id}
       </h1>
     </div>
   );

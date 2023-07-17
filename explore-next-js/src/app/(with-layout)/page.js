@@ -1,5 +1,10 @@
+export const metadata = {
+  title: 'Home | Next Hero',
+  description: 'Next Hero',
+};
+
 const HomePage = () => {
-  return <main className="flex flex-col items-center justify-between "></main>;
+  return <main>Home Page</main>;
 };
 
 export default HomePage;
