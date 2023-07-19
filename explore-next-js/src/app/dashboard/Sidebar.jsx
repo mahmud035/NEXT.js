@@ -1,3 +1,4 @@
+import NavLink from '@/components/NavLink';
 import Link from 'next/link';
 
 const dashboardLinks = [
@@ -26,7 +27,9 @@ const Sidebar = () => {
       <ul className="flex flex-col gap-2">
         {dashboardLinks.map(({ path, title }) => (
           <li key={path}>
-            <Link href={path}>{title}</Link>
+            <NavLink exact activeClassName="text-red-500" href={path}>
+              {title}
+            </NavLink>
           </li>
         ))}
       </ul>
