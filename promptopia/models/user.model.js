@@ -15,4 +15,6 @@ const UserSchema = new Schema({
   },
 });
 
+// NOTE: First check if the Model is already exists. If not then create it. We have to do this way, if we are using NEXT.js
+
 export const User = models.User || model('User', UserSchema);
